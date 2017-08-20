@@ -1,0 +1,25 @@
+baseURL = "https://www.xli.me"
+languageCode = "zh-Hans"
+title = "呓语"
+theme = "hugo-nuo"
+enableRobotsTXT = true
+pygmentsuseclasses = true
+PygmentsCodeFences = true
+canonifyurls = true
+
+[[menu.main]]
+  name = "首页"
+  weight = 10
+  identifier = "home"
+  url = "/"
+
+[params]
+  author = "xli"
+  avatar = "/img/avatar.jpg"
+  seotitle = "呓语~"
+  subtitle = "呓语~"
+  description = "brief is life but love is long~"
+  paginate = 10
+
+  email = "kaidiren@gmail.com"
+  github = "kaidiren"
