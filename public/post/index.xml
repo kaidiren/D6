@@ -30,5 +30,14 @@
       <description>又重新开始了~</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://xli.me/post/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8https/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://xli.me/post/%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8https/</guid>
+      <description>使用 netlify 给站点开启了 https 感觉还不错,可以开始写文章啦. 真是久违了.</description>
+    </item>
+    
   </channel>
 </rss>
