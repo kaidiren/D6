@@ -3,38 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://www.xli.me/about/</loc>
+    <loc>https://xli.me/about/</loc>
     <lastmod>2017-08-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.xli.me/post/%E7%AE%80%E5%8D%95%E7%9A%84%E6%B5%8B%E8%AF%95%E4%B8%8B%E5%90%A7/</loc>
+    <loc>https://xli.me/post/%E7%AE%80%E5%8D%95%E7%9A%84%E6%B5%8B%E8%AF%95%E4%B8%8B%E5%90%A7/</loc>
     <lastmod>2017-08-20T13:13:18+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.xli.me/post/hello-world/</loc>
+    <loc>https://xli.me/post/hello-world/</loc>
     <lastmod>2017-08-20T12:41:54+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.xli.me/categories/</loc>
+    <loc>https://xli.me/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.xli.me/post/</loc>
+    <loc>https://xli.me/post/</loc>
     <lastmod>2017-08-20T13:13:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.xli.me/tags/</loc>
+    <loc>https://xli.me/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.xli.me/</loc>
+    <loc>https://xli.me/</loc>
     <lastmod>2017-08-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
