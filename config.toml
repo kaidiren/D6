@@ -1,6 +1,6 @@
 baseURL = "https://www.xli.me"
 languageCode = "zh-Hans"
-title = "呓语"
+title = "~呓语~"
 theme = "hugo-nuo"
 enableRobotsTXT = true
 pygmentsuseclasses = true
@@ -17,7 +17,7 @@ canonifyurls = true
   author = "xli"
   avatar = "/img/avatar.jpg"
   seotitle = "呓语~"
-  subtitle = "呓语~"
+  subtitle = "brief is life but love is long~"
   description = "brief is life but love is long~"
   paginate = 10
 
