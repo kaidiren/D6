@@ -1,6 +1,6 @@
 baseURL = "https://www.xli.me"
 languageCode = "zh-Hans"
-title = "~呓语~"
+title = "Mr Fox"
 theme = "hugo-nuo"
 enableRobotsTXT = true
 pygmentsuseclasses = true

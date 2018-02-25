@@ -18,6 +18,12 @@
   </url>
   
   <url>
+    <loc>https://xli.me/</loc>
+    <lastmod>2017-08-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://xli.me/post/</loc>
     <lastmod>2018-02-25T14:14:04+08:00</lastmod>
     <priority>0</priority>
@@ -25,12 +31,6 @@
   
   <url>
     <loc>https://xli.me/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xli.me/</loc>
-    <lastmod>2017-08-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
