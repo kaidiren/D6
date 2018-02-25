@@ -10,7 +10,7 @@ enableEmoji = true
 
 [[menu.main]]
   name = "首页"
-  weight = 10
+  weight = 20
   identifier = "home"
   url = "/"
 

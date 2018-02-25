@@ -6,10 +6,24 @@
     <description>Recent content in Posts on Mr Fox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sun, 25 Feb 2018 14:14:04 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 25 Feb 2018 08:05:27 +0000</lastBuildDate>
     
 	<atom:link href="https://xli.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>测试文章发布</title>
+      <link>https://xli.me/post/l/2018/1/</link>
+      <pubDate>Sun, 25 Feb 2018 08:05:27 +0000</pubDate>
+      
+      <guid>https://xli.me/post/l/2018/1/</guid>
+      <description>这是一篇 从 github issue 发来的文章.
+ [x] 有一个简洁的输入框
+ [x] 可以在手机上使用 😋
+ [x] 支持 markdown
+  所以先以这样的发布吧. 🎉
+评论地址</description>
+    </item>
     
     <item>
       <title>算是新的开始吧</title>
