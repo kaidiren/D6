@@ -15,6 +15,7 @@
 
 
 
+
   
   <meta name="author" content="xli" />
   <meta name="description" content="brief is life but love is long~" />
@@ -26,10 +27,17 @@
   <meta name="twitter:description" content="brief is life but love is long~" />
   <meta name="twitter:image" content="https://xli.me/img/avatar.jpg" />
 
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="呓语~" />
+  <meta property="og:description" content="brief is life but love is long~" />
+  <meta property="og:url" content="https://xli.me/about/" />
+  <meta property="og:image" content="https://xli.me/img/avatar.jpg" />
 
 
 
-<meta name="generator" content="Hugo 0.31.1" />
+
+<meta name="generator" content="Hugo 0.36.1" />
 
 
 <link rel="canonical" href="https://xli.me/about/" />
@@ -67,7 +75,7 @@
 
 
 
-<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.1/video-js.min.css" />
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
 
 <link rel="stylesheet" href="https://xli.me/css/bundle.css" />
 
@@ -76,18 +84,18 @@
   <!--[if lt IE 9]>
     <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <script src="//cdn.bootcss.com/video.js/6.2.1/ie8/videojs-ie8.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
   <![endif]-->
 
 <!--[if lte IE 11]>
-    <script src="//cdn.bootcss.com/classlist/2014.01.31/classList.min.js"></script>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
   <![endif]-->
 
 
 <script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
 
 
-<script src="//cdn.bootcss.com/smooth-scroll/12.1.0/js/smooth-scroll.polyfills.min.js"></script>
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
 
 
 </head>
@@ -115,9 +123,21 @@
       
       
       
-        <li class="menu-item "><a href="https://xli.me/">首页</a></li>
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://xli.me/">首页</a>
+          </li>
       
-        <li class="menu-item  is-active"><a href="https://xli.me/about/">关于</a></li>
+        <li class="menu-item
+            
+              is-active
+            
+            
+            ">
+            <a href="https://xli.me/about/">关于</a>
+          </li>
       
     </ul>
   </nav>
@@ -199,8 +219,29 @@
 
 
 
-<script src="//cdn.bootcss.com/video.js/6.2.1/video.min.js"></script>
-<script src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
 
 <script src="https://xli.me/js/bundle.js"></script>
 
