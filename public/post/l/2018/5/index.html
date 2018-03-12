@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>EOS 智能合约体验</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="xli" />
+  <meta name="description" content="接上文: https://github.com/kaidiren/D6/issues/4
+官方文档地址: https://github.com/EOSIO/eos#example-currency-contract-walkthrough
+智能合约示例 首先启动 节点
+docker-compose up
+导入帐号 在创世区块的配置中已经存在一个 eosio 的账户, 把私钥导入.
+eosioc wallet import 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 为 &amp;ldquo;currency&amp;rdquo; 合约创建帐号 先生成2个密钥对:
+rkd@mac:~/blockchain/eos/Docker$ eosioc create key Private key: 5KMohsQ5cqXGgMRPH5qXqaTpRhrThwtGT7e8sqS7KuxXRxGLFfW Public key: EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat // owner_key rkd@mac:~/blockchain/eos/Docker$ eosioc create key Private key: 5K8T42F56S6VX3bFh3sC6UcNjC1aQEY37AmK2rdnXVzsSX3YeCT Public key: EOS6RPNryk7rxkrcxKEigmrNBS4dzGcUqdoWT4HupbrbYnVro5npM // active_key 通过 eosio 这个帐号, 创建 currency 帐号
+eosioc create account eosio currency EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat 会返回一大段 json 串就说明成功了
+查询一下: eosioc get account currency
+返回结果:
+{ &amp;#34;account_name&amp;#34;: &amp;#34;currency&amp;#34;, &amp;#34;permissions&amp;#34;: [] } 导入钱包私钥:" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="EOS 智能合约体验" />
+    <meta name="twitter:description" content="接上文: https://github.com/kaidiren/D6/issues/4
+官方文档地址: https://github.com/EOSIO/eos#example-currency-contract-walkthrough
+智能合约示例 首先启动 节点
+docker-compose up
+导入帐号 在创世区块的配置中已经存在一个 eosio 的账户, 把私钥导入.
+eosioc wallet import 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 为 &amp;ldquo;currency&amp;rdquo; 合约创建帐号 先生成2个密钥对:
+rkd@mac:~/blockchain/eos/Docker$ eosioc create key Private key: 5KMohsQ5cqXGgMRPH5qXqaTpRhrThwtGT7e8sqS7KuxXRxGLFfW Public key: EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat // owner_key rkd@mac:~/blockchain/eos/Docker$ eosioc create key Private key: 5K8T42F56S6VX3bFh3sC6UcNjC1aQEY37AmK2rdnXVzsSX3YeCT Public key: EOS6RPNryk7rxkrcxKEigmrNBS4dzGcUqdoWT4HupbrbYnVro5npM // active_key 通过 eosio 这个帐号, 创建 currency 帐号
+eosioc create account eosio currency EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat 会返回一大段 json 串就说明成功了
+查询一下: eosioc get account currency
+返回结果:
+{ &amp;#34;account_name&amp;#34;: &amp;#34;currency&amp;#34;, &amp;#34;permissions&amp;#34;: [] } 导入钱包私钥:" />
+    <meta name="twitter:image" content="https://xli.me/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="EOS 智能合约体验" />
+  <meta property="og:description" content="接上文: https://github.com/kaidiren/D6/issues/4
+官方文档地址: https://github.com/EOSIO/eos#example-currency-contract-walkthrough
+智能合约示例 首先启动 节点
+docker-compose up
+导入帐号 在创世区块的配置中已经存在一个 eosio 的账户, 把私钥导入.
+eosioc wallet import 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 为 &amp;ldquo;currency&amp;rdquo; 合约创建帐号 先生成2个密钥对:
+rkd@mac:~/blockchain/eos/Docker$ eosioc create key Private key: 5KMohsQ5cqXGgMRPH5qXqaTpRhrThwtGT7e8sqS7KuxXRxGLFfW Public key: EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat // owner_key rkd@mac:~/blockchain/eos/Docker$ eosioc create key Private key: 5K8T42F56S6VX3bFh3sC6UcNjC1aQEY37AmK2rdnXVzsSX3YeCT Public key: EOS6RPNryk7rxkrcxKEigmrNBS4dzGcUqdoWT4HupbrbYnVro5npM // active_key 通过 eosio 这个帐号, 创建 currency 帐号
+eosioc create account eosio currency EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat 会返回一大段 json 串就说明成功了
+查询一下: eosioc get account currency
+返回结果:
+{ &amp;#34;account_name&amp;#34;: &amp;#34;currency&amp;#34;, &amp;#34;permissions&amp;#34;: [] } 导入钱包私钥:" />
+  <meta property="og:url" content="https://xli.me/post/l/2018/5/" />
+  <meta property="og:image" content="https://xli.me/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.36.1" />
+
+
+<link rel="canonical" href="https://xli.me/post/l/2018/5/" />
+<link rel="alternative" href="https://xli.me/index.xml" title="Mr Fox" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Mr Fox" />
+<meta name="msapplication-tooltip" content="Mr Fox" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://xli.me/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://xli.me/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://xli.me/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://xli.me/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://xli.me/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://xli.me/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://xli.me/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://xli.me/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">Mr Fox</h2>
+  
+  <p class="subtitle">brief is life but love is long~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://xli.me/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://xli.me/">首页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://xli.me/about/">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:kaidiren@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/kaidiren" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://xli.me/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">EOS 智能合约体验</h1>
+      <p class="post-meta">@xli · Mar 12, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content">
+
+<p>接上文:  <a href="https://github.com/kaidiren/D6/issues/4">https://github.com/kaidiren/D6/issues/4</a></p>
+
+<p>官方文档地址: <a href="https://github.com/EOSIO/eos#example-currency-contract-walkthrough">https://github.com/EOSIO/eos#example-currency-contract-walkthrough</a></p>
+
+<h3 id="智能合约示例">智能合约示例</h3>
+
+<p>首先启动 节点</p>
+
+<p><code>docker-compose up</code></p>
+
+<h3 id="导入帐号">导入帐号</h3>
+
+<p>在创世区块的配置中已经存在一个 eosio 的账户, 把私钥导入.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">eosioc wallet import 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3</code></pre></div>
+<h3 id="为-currency-合约创建帐号">为 &ldquo;currency&rdquo; 合约创建帐号</h3>
+
+<p>先生成2个密钥对:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">rkd@mac:~/blockchain/eos/Docker$ eosioc create key
+Private key: 5KMohsQ5cqXGgMRPH5qXqaTpRhrThwtGT7e8sqS7KuxXRxGLFfW
+Public key: EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat   // owner_key
+rkd@mac:~/blockchain/eos/Docker$ eosioc create key
+Private key: 5K8T42F56S6VX3bFh3sC6UcNjC1aQEY37AmK2rdnXVzsSX3YeCT
+Public key: EOS6RPNryk7rxkrcxKEigmrNBS4dzGcUqdoWT4HupbrbYnVro5npM  // active_key</code></pre></div>
+<p>通过 eosio 这个帐号, 创建 currency 帐号</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">eosioc create account eosio currency EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat</code></pre></div>
+<p>会返回一大段 json 串就说明成功了</p>
+
+<p>查询一下:
+<code>eosioc get account currency</code></p>
+
+<p>返回结果:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;account_name&#34;</span><span class="p">:</span> <span class="s2">&#34;currency&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;permissions&#34;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span></code></pre></div>
+<p>导入钱包私钥:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">eosioc wallet import 5KMohsQ5cqXGgMRPH5qXqaTpRhrThwtGT7e8sqS7KuxXRxGLFfW
+eosioc wallet import 5K8T42F56S6VX3bFh3sC6UcNjC1aQEY37AmK2rdnXVzsSX3YeCT</code></pre></div>
+<h3 id="上传-currency-合约">上传 &ldquo;currency&rdquo; 合约</h3>
+
+<p>上传前可以查看下:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">eosioc get code currency
+code hash: <span class="m">0000000000000000000000000000000000000000000000000000000000000000</span></code></pre></div>
+<p>上传:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">eosioc <span class="nb">set</span> contract currency ../../contracts/currency/currency.wast ../../contracts/currency/currency.abi</code></pre></div>
+<p>返回的结果中带有 <code>transaction_id</code> 字段那就说明成功了</p>
+
+<p>你可以再查询验证下:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">eosioc get code currency</code></pre></div>
+<p>返回结果看起来像这样子:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">code hash: 9b9db1a7940503a88535517049e64467a6e8f4e9e03af15e9968ec89dd794975</code></pre></div>
+<p>使用这个合约前,要现先生成代币.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">eosioc push action currency issue <span class="s1">&#39;{&#34;to&#34;:&#34;currency&#34;,&#34;quantity&#34;:&#34;1000.0000 CUR&#34;}&#39;</span> --permission currency@active</code></pre></div>
+<p>验证下看看余额对不对:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">eosioc get table currency currency account
+<span class="o">{</span>
+  <span class="s2">&#34;rows&#34;</span>: <span class="o">[{</span>
+     <span class="s2">&#34;currency&#34;</span>: <span class="m">1381319428</span>,
+     <span class="s2">&#34;balance&#34;</span>: <span class="m">10000000</span>
+     <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">&#34;more&#34;</span>: <span class="nb">false</span>
+<span class="o">}</span></code></pre></div>
+<h3 id="通过合约交易">通过合约交易</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">eosioc push action currency transfer <span class="s1">&#39;{&#34;from&#34;:&#34;currency&#34;,&#34;to&#34;:&#34;eosio&#34;,&#34;quantity&#34;:&#34;20.0000 CUR&#34;,&#34;memo&#34;:&#34;my first transfer&#34;}&#39;</span> --permission currency@active</code></pre></div>
+<p>返回的结果中带有 <code>transaction_id</code> 字段那就说明成功了</p>
+
+<h3 id="通过合约查询余额">通过合约查询余额</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">eosioc get table eosio currency account
+<span class="o">{</span>
+  <span class="s2">&#34;rows&#34;</span>: <span class="o">[{</span>
+      <span class="s2">&#34;currency&#34;</span>: <span class="m">1381319428</span>,
+      <span class="s2">&#34;balance&#34;</span>: <span class="m">200000</span>
+       <span class="o">}</span>
+    <span class="o">]</span>,
+  <span class="s2">&#34;more&#34;</span>: <span class="nb">false</span>
+<span class="o">}</span>
+eosioc get table currency currency account
+<span class="o">{</span>
+  <span class="s2">&#34;rows&#34;</span>: <span class="o">[{</span>
+      <span class="s2">&#34;currency&#34;</span>: <span class="m">1381319428</span>,
+      <span class="s2">&#34;balance&#34;</span>: <span class="m">9800000</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">&#34;more&#34;</span>: <span class="nb">false</span>
+<span class="o">}</span></code></pre></div>
+<p>显然余额已经发生变化了.</p>
+
+<p><a href="https://github.com/kaidiren/D6/issues/5">评论地址</a></p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://xli.me/tags/%E6%8A%80%E6%9C%AF"><span class="tag">技术</span></a></li>
+        
+          <li><a href="https://xli.me/tags/%E6%96%87%E7%AB%A0"><span class="tag">文章</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 Mr Fox</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://xli.me/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>

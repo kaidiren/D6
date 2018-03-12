@@ -213,6 +213,47 @@
       
         <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="https://xli.me/post/l/2018/5/" class="post-link">EOS 智能合约体验</a></h3>
+    <p class="post-meta">@xli · Mar 12, 2018 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">接上文: https://github.com/kaidiren/D6/issues/4
+官方文档地址: https://github.com/EOSIO/eos#example-currency-contract-walkthrough
+智能合约示例 首先启动 节点
+docker-compose up
+导入帐号 在创世区块的配置中已经存在一个 eosio 的账户, 把私钥导入.
+eosioc wallet import 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 为 “currency” 合约创建帐号 先生成2个密钥对:
+rkd@mac:~/blockchain/eos/Docker$ eosioc create key Private key: 5KMohsQ5cqXGgMRPH5qXqaTpRhrThwtGT7e8sqS7KuxXRxGLFfW Public key: EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat // owner_key rkd@mac:~/blockchain/eos/Docker$ eosioc create key Private key: 5K8T42F56S6VX3bFh3sC6UcNjC1aQEY37AmK2rdnXVzsSX3YeCT Public key: EOS6RPNryk7rxkrcxKEigmrNBS4dzGcUqdoWT4HupbrbYnVro5npM // active_key 通过 eosio 这个帐号, 创建 currency 帐号
+eosioc create account eosio currency EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat 会返回一大段 json 串就说明成功了
+查询一下: eosioc get account currency
+返回结果:
+{ &#34;account_name&#34;: &#34;currency&#34;, &#34;permissions&#34;: [] } 导入钱包私钥:</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://xli.me/post/l/2018/5/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="https://xli.me/post/l/2018/4/" class="post-link">EOS 部署尝试 </a></h3>
+    <p class="post-meta">@xli · Mar 12, 2018 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">基础条件
+ docker git  如果不知道怎么安装请,自己百度 或 者 google, 这里就不详细说明了. 为什么使用docker 是因为构建过程依赖复杂,还很耗费时间所以直接使用dockerhub上构建好的镜像.
+下载项目和配置 git clone https://github.com/EOSIO/eos.git cd eos/Docker docker pull eosio/eos
+编辑 docker-compose.yml 文件, 替换为:
+version: &#34;2&#34; services: eosiod: image: eosio/eos command: /opt/eosio/bin/start_eosiod.sh ports: - 8888:8888 - 9876:9876 expose: - &#34;8888&#34; volumes: - eosiod-data-volume:/opt/eosio/bin/data-dir - ./config.ini:/opt/eosio/bin/data-dir/config.ini walletd: image: eosio/eos command: /opt/eosio/bin/eosiowd links: - eosiod volumes: - walletd-data-volume:/opt/eosio/bin/data-dir volumes: eosiod-data-volume: walletd-data-volume:  项目启动与重启 执行 docker-compose up 启动文件
+如果想要修改配置文件, 直接编辑当前目录下的 config.ini, 修改完成后, 执行 docker-compose down -v, docker-compose up 即可.</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://xli.me/post/l/2018/4/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="https://xli.me/post/s/2018/3/" class="post-link"></a></h3>
     <p class="post-meta">@xli · Feb 26, 2018 · 1 min read</p>
   </header>
@@ -447,32 +488,6 @@
   <p class="post-summary">Hack without fear!</p>
   <footer class="post-footer">
     <a class="read-more" href="https://xli.me/post/s/2017/455/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://xli.me/post/s/2017/454/" class="post-link"></a></h3>
-    <p class="post-meta">@xli · Dec 15, 2015 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">那是自己的选择，不用后悔什么的。</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://xli.me/post/s/2017/454/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://xli.me/post/s/2017/453/" class="post-link"></a></h3>
-    <p class="post-meta">@xli · Dec 13, 2015 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">if you miss it, you will miss all.</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://xli.me/post/s/2017/453/">Read More →</a>
   </footer>
 </article>
 

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>文章 on Mr Fox</title>
+    <link>https://xli.me/tags/%E6%96%87%E7%AB%A0/</link>
+    <description>Recent content in 文章 on Mr Fox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 12 Mar 2018 09:06:06 +0000</lastBuildDate>
+    
+	<atom:link href="https://xli.me/tags/%E6%96%87%E7%AB%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>EOS 智能合约体验</title>
+      <link>https://xli.me/post/l/2018/5/</link>
+      <pubDate>Mon, 12 Mar 2018 09:06:06 +0000</pubDate>
+      
+      <guid>https://xli.me/post/l/2018/5/</guid>
+      <description>接上文: https://github.com/kaidiren/D6/issues/4
+官方文档地址: https://github.com/EOSIO/eos#example-currency-contract-walkthrough
+智能合约示例 首先启动 节点
+docker-compose up
+导入帐号 在创世区块的配置中已经存在一个 eosio 的账户, 把私钥导入.
+eosioc wallet import 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 为 &amp;ldquo;currency&amp;rdquo; 合约创建帐号 先生成2个密钥对:
+rkd@mac:~/blockchain/eos/Docker$ eosioc create key Private key: 5KMohsQ5cqXGgMRPH5qXqaTpRhrThwtGT7e8sqS7KuxXRxGLFfW Public key: EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat // owner_key rkd@mac:~/blockchain/eos/Docker$ eosioc create key Private key: 5K8T42F56S6VX3bFh3sC6UcNjC1aQEY37AmK2rdnXVzsSX3YeCT Public key: EOS6RPNryk7rxkrcxKEigmrNBS4dzGcUqdoWT4HupbrbYnVro5npM // active_key 通过 eosio 这个帐号, 创建 currency 帐号
+eosioc create account eosio currency EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat EOS55iuKLbH2XhNv4pJXjNtxTJYoD5Xes2PuB4N7LYfgdeEjFPWat 会返回一大段 json 串就说明成功了
+查询一下: eosioc get account currency
+返回结果:
+{ &amp;#34;account_name&amp;#34;: &amp;#34;currency&amp;#34;, &amp;#34;permissions&amp;#34;: [] } 导入钱包私钥:</description>
+    </item>
+    
+    <item>
+      <title>EOS 部署尝试 </title>
+      <link>https://xli.me/post/l/2018/4/</link>
+      <pubDate>Mon, 12 Mar 2018 08:44:10 +0000</pubDate>
+      
+      <guid>https://xli.me/post/l/2018/4/</guid>
+      <description>基础条件
+ docker git  如果不知道怎么安装请,自己百度 或 者 google, 这里就不详细说明了. 为什么使用docker 是因为构建过程依赖复杂,还很耗费时间所以直接使用dockerhub上构建好的镜像.
+下载项目和配置 git clone https://github.com/EOSIO/eos.git cd eos/Docker docker pull eosio/eos
+编辑 docker-compose.yml 文件, 替换为:
+version: &amp;quot;2&amp;quot; services: eosiod: image: eosio/eos command: /opt/eosio/bin/start_eosiod.sh ports: - 8888:8888 - 9876:9876 expose: - &amp;quot;8888&amp;quot; volumes: - eosiod-data-volume:/opt/eosio/bin/data-dir - ./config.ini:/opt/eosio/bin/data-dir/config.ini walletd: image: eosio/eos command: /opt/eosio/bin/eosiowd links: - eosiod volumes: - walletd-data-volume:/opt/eosio/bin/data-dir volumes: eosiod-data-volume: walletd-data-volume:  项目启动与重启 执行 docker-compose up 启动文件
+如果想要修改配置文件, 直接编辑当前目录下的 config.ini, 修改完成后, 执行 docker-compose down -v, docker-compose up 即可.</description>
+    </item>
+    
+  </channel>
+</rss>
