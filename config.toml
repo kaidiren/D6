@@ -15,13 +15,13 @@ enableEmoji = true
   url = "/"
 
 [[menu.main]]
-  name = "标签"
+  name = "技术"
   weight = 10
   identifier = "tags"
   url = "/tags/技术/"
 
 [[menu.main]]
-  name = "标签"
+  name = "分类"
   weight = 10
   identifier = "tags"
   url = "/tags/"
