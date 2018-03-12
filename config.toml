@@ -17,7 +17,7 @@ enableEmoji = true
 [[menu.main]]
   name = "技术"
   weight = 20
-  identifier = "tags"
+  identifier = "js"
   url = "/tags/技术/"
 
 [[menu.main]]
