@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>EOS eosio.system 和 eosio.token 合约部署</title>
+      <link>https://xli.me/post/l/2018/12/</link>
+      <pubDate>Thu, 17 May 2018 12:53:13 +0000</pubDate>
+      
+      <guid>https://xli.me/post/l/2018/12/</guid>
+      <description>eos 版本 dawn-v4.0.0 前置条件 bios 已经设置好了，相关的 bp 也已经设置完毕  # 创建 token 对应的账号 ./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 create account eosio eosio.token EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV # 部署 system 合约 ./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 set contract eosio.token contracts/eosio.system -p eosio.token@active # 部署token 合约 ./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 set contract eosio.token contracts/eosio.token -p eosio.token@active # 创建 eos token ./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 push action eosio.token create &amp;#39;{&amp;#34;issuer&amp;#34;:&amp;#34;eosio.token&amp;#34;, &amp;#34;maximum_supply&amp;#34;:&amp;#34;1000000000.0000 EOS&amp;#34;,&amp;#34;can_freeze&amp;#34;:0, &amp;#34;can_recall&amp;#34;:0, &amp;#34;can_whitelist&amp;#34;:0}&amp;#39; -p eosio.</description>
+    </item>
+    
+    <item>
       <title></title>
       <link>https://xli.me/post/s/2018/11/</link>
       <pubDate>Sun, 25 Mar 2018 12:00:49 +0000</pubDate>

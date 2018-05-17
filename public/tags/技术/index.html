@@ -226,6 +226,19 @@
       
         <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="https://xli.me/post/l/2018/12/" class="post-link">EOS eosio.system 和 eosio.token 合约部署</a></h3>
+    <p class="post-meta">@xli · May 17, 2018 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">eos 版本 dawn-v4.0.0 前置条件 bios 已经设置好了，相关的 bp 也已经设置完毕  # 创建 token 对应的账号 ./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 create account eosio eosio.token EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV # 部署 system 合约 ./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 set contract eosio.token contracts/eosio.system -p eosio.token@active # 部署token 合约 ./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 set contract eosio.token contracts/eosio.token -p eosio.token@active # 创建 eos token ./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 push action eosio.token create &#39;{&#34;issuer&#34;:&#34;eosio.token&#34;, &#34;maximum_supply&#34;:&#34;1000000000.0000 EOS&#34;,&#34;can_freeze&#34;:0, &#34;can_recall&#34;:0, &#34;can_whitelist&#34;:0}&#39; -p eosio.</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://xli.me/post/l/2018/12/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="https://xli.me/post/l/2018/5/" class="post-link">EOS 智能合约体验</a></h3>
     <p class="post-meta">@xli · Mar 12, 2018 · 1 min read</p>
   </header>
