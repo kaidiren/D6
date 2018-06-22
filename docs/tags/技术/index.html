@@ -226,6 +226,20 @@
       
         <article class="post-entry">
   <header class="post-header">
+    <h3 class="post-title"><a href="https://xli.me/post/l/2018/13/" class="post-link">iptables 端口转发</a></h3>
+    <p class="post-meta">@xli · Jun 22, 2018 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">列出所有规则 iptables -t nat --line-numbers -L
+ 删除指定规则 iptables -t nat -D OUTPUT 2 端口转发 示例从 9001 转发到 8000 iptables -t nat -A PREROUTING -p tcp --dport 8000 -j REDIRECT --to-ports 9001 iptables -t nat -A OUTPUT -p tcp -d localhost --dport 8000 -j REDIRECT --to-ports 9001  评论地址</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://xli.me/post/l/2018/13/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
     <h3 class="post-title"><a href="https://xli.me/post/l/2018/12/" class="post-link">EOS eosio.system 和 eosio.token 合约部署</a></h3>
     <p class="post-meta">@xli · May 17, 2018 · 1 min read</p>
   </header>
