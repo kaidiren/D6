@@ -8,6 +8,16 @@
   </url>
   
   <url>
+    <loc>https://xli.me/post/l/2018/15/</loc>
+    <lastmod>2018-12-11T07:55:58+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xli.me/post/l/2018/14/</loc>
+    <lastmod>2018-12-11T07:02:40+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xli.me/post/l/2018/13/</loc>
     <lastmod>2018-06-22T09:47:21+00:00</lastmod>
   </url>
@@ -1728,7 +1738,7 @@
   </url>
   
   <url>
-    <loc>https://xli.me/post/l/2017/%E8%87%B4%E6%A9%A1%E6%A0%91--%E8%88%92%E5%A9%B7/</loc>
+    <loc>https://xli.me/post/l/2017/%E8%87%B4%E6%A9%A1%E6%A0%91-%E8%88%92%E5%A9%B7/</loc>
     <lastmod>2014-01-08T02:09:26+00:00</lastmod>
   </url>
   
@@ -2330,7 +2340,7 @@
   
   <url>
     <loc>https://xli.me/post/</loc>
-    <lastmod>2018-06-22T09:47:21+00:00</lastmod>
+    <lastmod>2018-12-11T07:55:58+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2346,8 +2356,14 @@
   </url>
   
   <url>
+    <loc>https://xli.me/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2018-12-11T07:55:58+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://xli.me/tags/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2018-06-22T09:47:21+00:00</lastmod>
+    <lastmod>2018-12-11T07:55:58+00:00</lastmod>
     <priority>0</priority>
   </url>
   

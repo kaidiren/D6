@@ -21,6 +21,38 @@
     </item>
     
     <item>
+      <title>让终端 sudo 时用上 Touch ID</title>
+      <link>https://xli.me/post/l/2018/15/</link>
+      <pubDate>Tue, 11 Dec 2018 07:55:58 +0000</pubDate>
+      
+      <guid>https://xli.me/post/l/2018/15/</guid>
+      <description>用了一段时间 MacBook Pro with TouchBar 感觉开机或唤醒时读指纹还是很方便的，但安装一些软件或执行命令操作时还是需要输入密码，似乎不那么省事，对设置复杂密码也不够友好。今天学到了一个新技巧，让我们在终端里sudo执行命令时不再需要手输密码，而是Touch ID验证。
+修改/etc/pam.d/sudo这个文件，建议用 sudo vim /etc/pam.d/sudo
+在第一行增加 auth sufficient pam_tid.so
+现在尝试下 sudo 操作吧，应该会看到提示识别指纹而不是输入密码了。
+如果你使用了 tmux 需要 添加额外的配置
+https://github.com/fabianishere/pam_reattach
+git clone https://github.com/fabianishere/pam_reattach cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/local &amp;lt;PATH-TO-SOURCE&amp;gt; make sudo make install
+修改/etc/pam.d/sudo这个文件，建议用 sudo vim /etc/pam.d/sudo
+在第一行增加 auth optional pam_reattach.so
+然后就可以顺利使用了
+评论地址</description>
+    </item>
+    
+    <item>
+      <title>磁盘挂载</title>
+      <link>https://xli.me/post/l/2018/14/</link>
+      <pubDate>Tue, 11 Dec 2018 07:02:40 +0000</pubDate>
+      
+      <guid>https://xli.me/post/l/2018/14/</guid>
+      <description>硬盘挂载 硬盘挂载 mount -o rw /dev/sdb1 /disk/sata01
+显示 硬盘设备生产商 lsscsi 可以用于查看是 ssd 还是 hdd 查看挂载关系 lsblk
+查看硬盘设备 fdisk -l
+显示硬盘使用信息 df -lh
+评论地址</description>
+    </item>
+    
+    <item>
       <title>iptables 端口转发</title>
       <link>https://xli.me/post/l/2018/13/</link>
       <pubDate>Fri, 22 Jun 2018 09:47:21 +0000</pubDate>
@@ -3147,10 +3179,10 @@ BGM：棠梨煎雪http://yc.5sing.com/2146994.html</description>
     
     <item>
       <title>《致橡树》--舒婷</title>
-      <link>https://xli.me/post/l/2017/%E8%87%B4%E6%A9%A1%E6%A0%91--%E8%88%92%E5%A9%B7/</link>
+      <link>https://xli.me/post/l/2017/%E8%87%B4%E6%A9%A1%E6%A0%91-%E8%88%92%E5%A9%B7/</link>
       <pubDate>Wed, 08 Jan 2014 02:09:26 +0000</pubDate>
       
-      <guid>https://xli.me/post/l/2017/%E8%87%B4%E6%A9%A1%E6%A0%91--%E8%88%92%E5%A9%B7/</guid>
+      <guid>https://xli.me/post/l/2017/%E8%87%B4%E6%A9%A1%E6%A0%91-%E8%88%92%E5%A9%B7/</guid>
       <description>有时候回忆果然会有特别的味道 我如果爱你 绝不像攀援的凌霄花 借你的高枝炫耀自己 我如果爱你 绝不学痴情的鸟儿 为绿荫重复单调的歌曲 也不止像泉源 常年送来清凉的慰籍； 也不止像险峰 增加你的高度 衬托你的威仪 甚至日光 甚至春雨 不 这些都还不够！ 我必须是你近旁的一株木棉 做为树的形象和你站在一起 根 紧握在地下 叶 相触在云里 每一阵风过 我们都互相致意 但没有人 听懂我们的言语 你有你的铜枝铁干 像刀 像剑 也像戟 我有我的红硕花朵 像沉重的叹息 又像英勇的火炬 我们分担寒潮、风雷、霹雳； 我们共享雾霭、流岚、虹霓 仿佛永远分离 却又终身相依 这才是伟大的爱情 坚贞就在这里： 不仅爱你伟岸的身躯 也爱你坚持的位置 脚下的土地</description>
     </item>
     

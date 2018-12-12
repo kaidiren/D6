@@ -37,7 +37,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.37.1" />
+<meta name="generator" content="Hugo 0.52" />
 
 
 <link rel="canonical" href="https://xli.me/post/l/2018/12/" />
@@ -226,25 +226,25 @@
 <li>eos 版本  dawn-v4.0.0</li>
 <li>前置条件 bios 已经设置好了，相关的 bp 也已经设置完毕</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#  创建 token 对应的账号
-</span><span class="c1"></span>./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 create account eosio eosio.token EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
-<span class="c1"># 部署 system 合约
-</span><span class="c1"></span>./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 <span class="nb">set</span> contract eosio.token contracts/eosio.system -p eosio.token@active
-<span class="c1"># 部署token 合约
-</span><span class="c1"></span>./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 <span class="nb">set</span> contract eosio.token contracts/eosio.token -p eosio.token@active
-<span class="c1"># 创建 eos token
-</span><span class="c1"></span>./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 push action eosio.token create <span class="s1">&#39;{&#34;issuer&#34;:&#34;eosio.token&#34;, &#34;maximum_supply&#34;:&#34;1000000000.0000 EOS&#34;,&#34;can_freeze&#34;:0, &#34;can_recall&#34;:0, &#34;can_whitelist&#34;:0}&#39;</span> -p eosio.token@active
-<span class="c1"># 发放 eos token
-</span><span class="c1"></span>./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 push action eosio.token issue <span class="s1">&#39;{&#34;to&#34;:&#34;eosio.token&#34;,&#34;quantity&#34;:&#34;1000000000.0000 EOS&#34;,&#34;memo&#34;:&#34;init&#34;}&#39;</span> -p eosio.token@active
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#  创建 token 对应的账号</span>
+./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 create account eosio eosio.token EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+<span class="c1"># 部署 system 合约</span>
+./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 <span class="nb">set</span> contract eosio.token contracts/eosio.system -p eosio.token@active
+<span class="c1"># 部署token 合约</span>
+./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 <span class="nb">set</span> contract eosio.token contracts/eosio.token -p eosio.token@active
+<span class="c1"># 创建 eos token</span>
+./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 push action eosio.token create <span class="s1">&#39;{&#34;issuer&#34;:&#34;eosio.token&#34;, &#34;maximum_supply&#34;:&#34;1000000000.0000 EOS&#34;,&#34;can_freeze&#34;:0, &#34;can_recall&#34;:0, &#34;can_whitelist&#34;:0}&#39;</span> -p eosio.token@active
+<span class="c1"># 发放 eos token</span>
+./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 push action eosio.token issue <span class="s1">&#39;{&#34;to&#34;:&#34;eosio.token&#34;,&#34;quantity&#34;:&#34;1000000000.0000 EOS&#34;,&#34;memo&#34;:&#34;init&#34;}&#39;</span> -p eosio.token@active
 
-<span class="c1"># 查询余额
-</span><span class="c1"></span>./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 get currency balance eosio.token eosio.token EOS
-<span class="c1"># 转账
-</span><span class="c1"></span>./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 push action eosio.token transfer <span class="s1">&#39;[ &#34;eosio.token&#34;, &#34;inita&#34;, &#34;1.0000 EOS&#34;, &#34;m&#34; ]&#39;</span> -p eosio.token
-<span class="c1"># 查询余额
-</span><span class="c1"></span>./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 get currency balance eosio.token inita EOS
-<span class="c1"># 查询余额
-</span><span class="c1"></span>./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 get currency balance eosio.token eosio.token EOS</code></pre></div>
+<span class="c1"># 查询余额</span>
+./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 get currency balance eosio.token eosio.token EOS
+<span class="c1"># 转账</span>
+./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 push action eosio.token transfer <span class="s1">&#39;[ &#34;eosio.token&#34;, &#34;inita&#34;, &#34;1.0000 EOS&#34;, &#34;m&#34; ]&#39;</span> -p eosio.token
+<span class="c1"># 查询余额</span>
+./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 get currency balance eosio.token inita EOS
+<span class="c1"># 查询余额</span>
+./programs/cleos/cleos --wallet-url http://localhost:8899 --url http://127.0.0.1:8788 get currency balance eosio.token eosio.token EOS</code></pre></div>
 <p><a href="https://github.com/kaidiren/D6/issues/12">评论地址</a></p>
 </article>
     <footer class="post-footer">

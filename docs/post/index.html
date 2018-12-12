@@ -40,7 +40,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.37.1" />
+<meta name="generator" content="Hugo 0.52" />
 
 
 <link rel="canonical" href="https://xli.me/post/" />
@@ -224,6 +224,46 @@
     </header>
     
     
+      
+        <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="https://xli.me/post/l/2018/15/" class="post-link">让终端 sudo 时用上 Touch ID</a></h3>
+    <p class="post-meta">@xli · Dec 11, 2018 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">用了一段时间 MacBook Pro with TouchBar 感觉开机或唤醒时读指纹还是很方便的，但安装一些软件或执行命令操作时还是需要输入密码，似乎不那么省事，对设置复杂密码也不够友好。今天学到了一个新技巧，让我们在终端里sudo执行命令时不再需要手输密码，而是Touch ID验证。
+修改/etc/pam.d/sudo这个文件，建议用 sudo vim /etc/pam.d/sudo
+在第一行增加 auth sufficient pam_tid.so
+现在尝试下 sudo 操作吧，应该会看到提示识别指纹而不是输入密码了。
+如果你使用了 tmux 需要 添加额外的配置
+https://github.com/fabianishere/pam_reattach
+git clone https://github.com/fabianishere/pam_reattach cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/local &lt;PATH-TO-SOURCE&gt; make sudo make install
+修改/etc/pam.d/sudo这个文件，建议用 sudo vim /etc/pam.d/sudo
+在第一行增加 auth optional pam_reattach.so
+然后就可以顺利使用了
+评论地址</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://xli.me/post/l/2018/15/">Read More →</a>
+  </footer>
+</article>
+
+      
+        <article class="post-entry">
+  <header class="post-header">
+    <h3 class="post-title"><a href="https://xli.me/post/l/2018/14/" class="post-link">磁盘挂载</a></h3>
+    <p class="post-meta">@xli · Dec 11, 2018 · 1 min read</p>
+  </header>
+  
+  <p class="post-summary">硬盘挂载 硬盘挂载 mount -o rw /dev/sdb1 /disk/sata01
+显示 硬盘设备生产商 lsscsi 可以用于查看是 ssd 还是 hdd 查看挂载关系 lsblk
+查看硬盘设备 fdisk -l
+显示硬盘使用信息 df -lh
+评论地址</p>
+  <footer class="post-footer">
+    <a class="read-more" href="https://xli.me/post/l/2018/14/">Read More →</a>
+  </footer>
+</article>
+
       
         <article class="post-entry">
   <header class="post-header">
@@ -483,32 +523,6 @@ version: &#34;2&#34; services: eosiod: image: eosio/eos command: /opt/eosio/bin/
   <p class="post-summary">似乎没有过多的选择机会~</p>
   <footer class="post-footer">
     <a class="read-more" href="https://xli.me/post/s/2017/465/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://xli.me/post/s/2017/464/" class="post-link"></a></h3>
-    <p class="post-meta">@xli · Mar 1, 2016 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">虽然有些问题思考起来会很痛苦，可是还是要继续下去。</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://xli.me/post/s/2017/464/">Read More →</a>
-  </footer>
-</article>
-
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://xli.me/post/s/2017/463/" class="post-link"></a></h3>
-    <p class="post-meta">@xli · Mar 1, 2016 · 1 min read</p>
-  </header>
-  
-  <p class="post-summary">行为学和设计学，密不可分~</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://xli.me/post/s/2017/463/">Read More →</a>
   </footer>
 </article>
 
