@@ -21,6 +21,17 @@
     </item>
     
     <item>
+      <title>波场交易数据结构</title>
+      <link>https://xli.me/post/l/2018/17/</link>
+      <pubDate>Thu, 27 Dec 2018 07:38:19 +0000</pubDate>
+      
+      <guid>https://xli.me/post/l/2018/17/</guid>
+      <description>TRX 转账交易 原始链接 https://tronscan.org/#/block/5280765/transfers 交易数据如下， trx 的进度为 6位
+{ &amp;#34;ret&amp;#34;: [ { &amp;#34;contractRet&amp;#34;: &amp;#34;SUCCESS&amp;#34; } ], &amp;#34;signature&amp;#34;: [ &amp;#34;a2d57b74cdbbfddf2a770ff1521f6a7811d1ed23474e2a4774324bd8a3e779810bcb5685bff32aeac50d5c0ee74ab5ff53d4ae901394d88ed666c8e03865c21801&amp;#34; ], &amp;#34;txID&amp;#34;: &amp;#34;d7ac8443d29c96748f2ca2dd0f04b0027ad6e40a534eddfe841a3dd6c37a7536&amp;#34;, &amp;#34;raw_data&amp;#34;: { &amp;#34;contract&amp;#34;: [ { &amp;#34;parameter&amp;#34;: { &amp;#34;value&amp;#34;: { &amp;#34;amount&amp;#34;: 199999900000, &amp;#34;owner_address&amp;#34;: &amp;#34;410d0707963952f2fba59dd06f2b425ace40b492fe&amp;#34;, &amp;#34;to_address&amp;#34;: &amp;#34;41bcaf8ed84fb2fd98dbd81a74613d607abf88745e&amp;#34; }, &amp;#34;type_url&amp;#34;: &amp;#34;type.googleapis.com/protocol.TransferContract&amp;#34; }, &amp;#34;type&amp;#34;: &amp;#34;TransferContract&amp;#34; } ], &amp;#34;ref_block_bytes&amp;#34;: &amp;#34;9274&amp;#34;, &amp;#34;ref_block_hash&amp;#34;: &amp;#34;950e6861e80b6fbc&amp;#34;, &amp;#34;expiration&amp;#34;: 1545897029528, &amp;#34;fee_limit&amp;#34;: 100000 } } TRX 智能合约调用 原始链接 https://tronscan.org/#/transaction/f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176
+{ &amp;#34;ret&amp;#34;: [ { &amp;#34;contractRet&amp;#34;: &amp;#34;SUCCESS&amp;#34; } ], &amp;#34;signature&amp;#34;: [ &amp;#34;a44921271007dd995e2ce5cc7ca76d9b378d9e03328e577ebd5a95b5b4db964c82d358b01ecd71412a1eebea3e3f7e773d6f9a211dec77cfae9809ef7b53e93500&amp;#34; ], &amp;#34;txID&amp;#34;: &amp;#34;f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176&amp;#34;, &amp;#34;raw_data&amp;#34;: { &amp;#34;contract&amp;#34;: [ { &amp;#34;parameter&amp;#34;: { &amp;#34;value&amp;#34;: { &amp;#34;data&amp;#34;: &amp;#34;a3082be900000000000000000000000000000000000000000000000000000000000000540000000000000000000000000000000000000000000000000000000000000000&amp;#34;, &amp;#34;owner_address&amp;#34;: &amp;#34;41ff587581be807d3a90d73a7fd1def7c51d6c62ed&amp;#34;, &amp;#34;contract_address&amp;#34;: &amp;#34;412ec5f63da00583085d4c2c5e8ec3c8d17bde5e28&amp;#34;, &amp;#34;call_value&amp;#34;: 260000000 }, &amp;#34;type_url&amp;#34;: &amp;#34;type.</description>
+    </item>
+    
+    <item>
       <title>[转]V神连发15条推文：PoS和分片区块链的效率将提升1000倍</title>
       <link>https://xli.me/post/l/2018/16/</link>
       <pubDate>Thu, 13 Dec 2018 02:50:24 +0000</pubDate>

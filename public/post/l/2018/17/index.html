@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>波场交易数据结构</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="xli" />
+  <meta name="description" content="TRX 转账交易 原始链接 https://tronscan.org/#/block/5280765/transfers 交易数据如下， trx 的进度为 6位
+{ &amp;#34;ret&amp;#34;: [ { &amp;#34;contractRet&amp;#34;: &amp;#34;SUCCESS&amp;#34; } ], &amp;#34;signature&amp;#34;: [ &amp;#34;a2d57b74cdbbfddf2a770ff1521f6a7811d1ed23474e2a4774324bd8a3e779810bcb5685bff32aeac50d5c0ee74ab5ff53d4ae901394d88ed666c8e03865c21801&amp;#34; ], &amp;#34;txID&amp;#34;: &amp;#34;d7ac8443d29c96748f2ca2dd0f04b0027ad6e40a534eddfe841a3dd6c37a7536&amp;#34;, &amp;#34;raw_data&amp;#34;: { &amp;#34;contract&amp;#34;: [ { &amp;#34;parameter&amp;#34;: { &amp;#34;value&amp;#34;: { &amp;#34;amount&amp;#34;: 199999900000, &amp;#34;owner_address&amp;#34;: &amp;#34;410d0707963952f2fba59dd06f2b425ace40b492fe&amp;#34;, &amp;#34;to_address&amp;#34;: &amp;#34;41bcaf8ed84fb2fd98dbd81a74613d607abf88745e&amp;#34; }, &amp;#34;type_url&amp;#34;: &amp;#34;type.googleapis.com/protocol.TransferContract&amp;#34; }, &amp;#34;type&amp;#34;: &amp;#34;TransferContract&amp;#34; } ], &amp;#34;ref_block_bytes&amp;#34;: &amp;#34;9274&amp;#34;, &amp;#34;ref_block_hash&amp;#34;: &amp;#34;950e6861e80b6fbc&amp;#34;, &amp;#34;expiration&amp;#34;: 1545897029528, &amp;#34;fee_limit&amp;#34;: 100000 } } TRX 智能合约调用 原始链接 https://tronscan.org/#/transaction/f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176
+{ &amp;#34;ret&amp;#34;: [ { &amp;#34;contractRet&amp;#34;: &amp;#34;SUCCESS&amp;#34; } ], &amp;#34;signature&amp;#34;: [ &amp;#34;a44921271007dd995e2ce5cc7ca76d9b378d9e03328e577ebd5a95b5b4db964c82d358b01ecd71412a1eebea3e3f7e773d6f9a211dec77cfae9809ef7b53e93500&amp;#34; ], &amp;#34;txID&amp;#34;: &amp;#34;f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176&amp;#34;, &amp;#34;raw_data&amp;#34;: { &amp;#34;contract&amp;#34;: [ { &amp;#34;parameter&amp;#34;: { &amp;#34;value&amp;#34;: { &amp;#34;data&amp;#34;: &amp;#34;a3082be900000000000000000000000000000000000000000000000000000000000000540000000000000000000000000000000000000000000000000000000000000000&amp;#34;, &amp;#34;owner_address&amp;#34;: &amp;#34;41ff587581be807d3a90d73a7fd1def7c51d6c62ed&amp;#34;, &amp;#34;contract_address&amp;#34;: &amp;#34;412ec5f63da00583085d4c2c5e8ec3c8d17bde5e28&amp;#34;, &amp;#34;call_value&amp;#34;: 260000000 }, &amp;#34;type_url&amp;#34;: &amp;#34;type." />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="波场交易数据结构" />
+    <meta name="twitter:description" content="TRX 转账交易 原始链接 https://tronscan.org/#/block/5280765/transfers 交易数据如下， trx 的进度为 6位
+{ &amp;#34;ret&amp;#34;: [ { &amp;#34;contractRet&amp;#34;: &amp;#34;SUCCESS&amp;#34; } ], &amp;#34;signature&amp;#34;: [ &amp;#34;a2d57b74cdbbfddf2a770ff1521f6a7811d1ed23474e2a4774324bd8a3e779810bcb5685bff32aeac50d5c0ee74ab5ff53d4ae901394d88ed666c8e03865c21801&amp;#34; ], &amp;#34;txID&amp;#34;: &amp;#34;d7ac8443d29c96748f2ca2dd0f04b0027ad6e40a534eddfe841a3dd6c37a7536&amp;#34;, &amp;#34;raw_data&amp;#34;: { &amp;#34;contract&amp;#34;: [ { &amp;#34;parameter&amp;#34;: { &amp;#34;value&amp;#34;: { &amp;#34;amount&amp;#34;: 199999900000, &amp;#34;owner_address&amp;#34;: &amp;#34;410d0707963952f2fba59dd06f2b425ace40b492fe&amp;#34;, &amp;#34;to_address&amp;#34;: &amp;#34;41bcaf8ed84fb2fd98dbd81a74613d607abf88745e&amp;#34; }, &amp;#34;type_url&amp;#34;: &amp;#34;type.googleapis.com/protocol.TransferContract&amp;#34; }, &amp;#34;type&amp;#34;: &amp;#34;TransferContract&amp;#34; } ], &amp;#34;ref_block_bytes&amp;#34;: &amp;#34;9274&amp;#34;, &amp;#34;ref_block_hash&amp;#34;: &amp;#34;950e6861e80b6fbc&amp;#34;, &amp;#34;expiration&amp;#34;: 1545897029528, &amp;#34;fee_limit&amp;#34;: 100000 } } TRX 智能合约调用 原始链接 https://tronscan.org/#/transaction/f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176
+{ &amp;#34;ret&amp;#34;: [ { &amp;#34;contractRet&amp;#34;: &amp;#34;SUCCESS&amp;#34; } ], &amp;#34;signature&amp;#34;: [ &amp;#34;a44921271007dd995e2ce5cc7ca76d9b378d9e03328e577ebd5a95b5b4db964c82d358b01ecd71412a1eebea3e3f7e773d6f9a211dec77cfae9809ef7b53e93500&amp;#34; ], &amp;#34;txID&amp;#34;: &amp;#34;f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176&amp;#34;, &amp;#34;raw_data&amp;#34;: { &amp;#34;contract&amp;#34;: [ { &amp;#34;parameter&amp;#34;: { &amp;#34;value&amp;#34;: { &amp;#34;data&amp;#34;: &amp;#34;a3082be900000000000000000000000000000000000000000000000000000000000000540000000000000000000000000000000000000000000000000000000000000000&amp;#34;, &amp;#34;owner_address&amp;#34;: &amp;#34;41ff587581be807d3a90d73a7fd1def7c51d6c62ed&amp;#34;, &amp;#34;contract_address&amp;#34;: &amp;#34;412ec5f63da00583085d4c2c5e8ec3c8d17bde5e28&amp;#34;, &amp;#34;call_value&amp;#34;: 260000000 }, &amp;#34;type_url&amp;#34;: &amp;#34;type." />
+    <meta name="twitter:image" content="https://xli.me/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="波场交易数据结构" />
+  <meta property="og:description" content="TRX 转账交易 原始链接 https://tronscan.org/#/block/5280765/transfers 交易数据如下， trx 的进度为 6位
+{ &amp;#34;ret&amp;#34;: [ { &amp;#34;contractRet&amp;#34;: &amp;#34;SUCCESS&amp;#34; } ], &amp;#34;signature&amp;#34;: [ &amp;#34;a2d57b74cdbbfddf2a770ff1521f6a7811d1ed23474e2a4774324bd8a3e779810bcb5685bff32aeac50d5c0ee74ab5ff53d4ae901394d88ed666c8e03865c21801&amp;#34; ], &amp;#34;txID&amp;#34;: &amp;#34;d7ac8443d29c96748f2ca2dd0f04b0027ad6e40a534eddfe841a3dd6c37a7536&amp;#34;, &amp;#34;raw_data&amp;#34;: { &amp;#34;contract&amp;#34;: [ { &amp;#34;parameter&amp;#34;: { &amp;#34;value&amp;#34;: { &amp;#34;amount&amp;#34;: 199999900000, &amp;#34;owner_address&amp;#34;: &amp;#34;410d0707963952f2fba59dd06f2b425ace40b492fe&amp;#34;, &amp;#34;to_address&amp;#34;: &amp;#34;41bcaf8ed84fb2fd98dbd81a74613d607abf88745e&amp;#34; }, &amp;#34;type_url&amp;#34;: &amp;#34;type.googleapis.com/protocol.TransferContract&amp;#34; }, &amp;#34;type&amp;#34;: &amp;#34;TransferContract&amp;#34; } ], &amp;#34;ref_block_bytes&amp;#34;: &amp;#34;9274&amp;#34;, &amp;#34;ref_block_hash&amp;#34;: &amp;#34;950e6861e80b6fbc&amp;#34;, &amp;#34;expiration&amp;#34;: 1545897029528, &amp;#34;fee_limit&amp;#34;: 100000 } } TRX 智能合约调用 原始链接 https://tronscan.org/#/transaction/f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176
+{ &amp;#34;ret&amp;#34;: [ { &amp;#34;contractRet&amp;#34;: &amp;#34;SUCCESS&amp;#34; } ], &amp;#34;signature&amp;#34;: [ &amp;#34;a44921271007dd995e2ce5cc7ca76d9b378d9e03328e577ebd5a95b5b4db964c82d358b01ecd71412a1eebea3e3f7e773d6f9a211dec77cfae9809ef7b53e93500&amp;#34; ], &amp;#34;txID&amp;#34;: &amp;#34;f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176&amp;#34;, &amp;#34;raw_data&amp;#34;: { &amp;#34;contract&amp;#34;: [ { &amp;#34;parameter&amp;#34;: { &amp;#34;value&amp;#34;: { &amp;#34;data&amp;#34;: &amp;#34;a3082be900000000000000000000000000000000000000000000000000000000000000540000000000000000000000000000000000000000000000000000000000000000&amp;#34;, &amp;#34;owner_address&amp;#34;: &amp;#34;41ff587581be807d3a90d73a7fd1def7c51d6c62ed&amp;#34;, &amp;#34;contract_address&amp;#34;: &amp;#34;412ec5f63da00583085d4c2c5e8ec3c8d17bde5e28&amp;#34;, &amp;#34;call_value&amp;#34;: 260000000 }, &amp;#34;type_url&amp;#34;: &amp;#34;type." />
+  <meta property="og:url" content="https://xli.me/post/l/2018/17/" />
+  <meta property="og:image" content="https://xli.me/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.52" />
+
+
+<link rel="canonical" href="https://xli.me/post/l/2018/17/" />
+<link rel="alternative" href="https://xli.me/index.xml" title="Mr Fox" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Mr Fox" />
+<meta name="msapplication-tooltip" content="Mr Fox" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://xli.me/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://xli.me/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://xli.me/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://xli.me/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://xli.me/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://xli.me/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://xli.me/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://xli.me/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">Mr Fox</h2>
+  
+  <p class="subtitle">brief is life but love is long~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://xli.me/">首页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://xli.me/tags/%E6%8A%80%E6%9C%AF/">技术</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://xli.me/tags/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://xli.me/about/">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:kaidiren@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/kaidiren" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://xli.me/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">波场交易数据结构</h1>
+      <p class="post-meta">@xli · Dec 27, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content">
+
+<h2 id="trx-转账交易">TRX 转账交易</h2>
+
+<p><img src="https://user-images.githubusercontent.com/2025174/50470487-9e575980-09eb-11e9-8ca1-63041486262f.png" alt="image" /></p>
+
+<p>原始链接  <a href="https://tronscan.org/#/block/5280765/transfers">https://tronscan.org/#/block/5280765/transfers</a>
+交易数据如下， trx 的进度为 6位</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;ret&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;contractRet&#34;</span><span class="p">:</span> <span class="s2">&#34;SUCCESS&#34;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;signature&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&#34;a2d57b74cdbbfddf2a770ff1521f6a7811d1ed23474e2a4774324bd8a3e779810bcb5685bff32aeac50d5c0ee74ab5ff53d4ae901394d88ed666c8e03865c21801&#34;</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;txID&#34;</span><span class="p">:</span> <span class="s2">&#34;d7ac8443d29c96748f2ca2dd0f04b0027ad6e40a534eddfe841a3dd6c37a7536&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;raw_data&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;contract&#34;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&#34;parameter&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;amount&#34;</span><span class="p">:</span> <span class="mi">199999900000</span><span class="p">,</span>
+            <span class="nt">&#34;owner_address&#34;</span><span class="p">:</span> <span class="s2">&#34;410d0707963952f2fba59dd06f2b425ace40b492fe&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;to_address&#34;</span><span class="p">:</span> <span class="s2">&#34;41bcaf8ed84fb2fd98dbd81a74613d607abf88745e&#34;</span>
+          <span class="p">},</span>
+          <span class="nt">&#34;type_url&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/protocol.TransferContract&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;TransferContract&#34;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;ref_block_bytes&#34;</span><span class="p">:</span> <span class="s2">&#34;9274&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;ref_block_hash&#34;</span><span class="p">:</span> <span class="s2">&#34;950e6861e80b6fbc&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;expiration&#34;</span><span class="p">:</span> <span class="mi">1545897029528</span><span class="p">,</span>
+    <span class="nt">&#34;fee_limit&#34;</span><span class="p">:</span> <span class="mi">100000</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="trx-智能合约调用">TRX 智能合约调用</h2>
+
+<p><img src="https://user-images.githubusercontent.com/2025174/50470621-335a5280-09ec-11e9-9a57-e6ea1350fc77.png" alt="image" /></p>
+
+<p>原始链接 <a href="https://tronscan.org/#/transaction/f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176">https://tronscan.org/#/transaction/f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;ret&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;contractRet&#34;</span><span class="p">:</span> <span class="s2">&#34;SUCCESS&#34;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;signature&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&#34;a44921271007dd995e2ce5cc7ca76d9b378d9e03328e577ebd5a95b5b4db964c82d358b01ecd71412a1eebea3e3f7e773d6f9a211dec77cfae9809ef7b53e93500&#34;</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;txID&#34;</span><span class="p">:</span> <span class="s2">&#34;f878b9b7cd351e512357de2b85be7ea9f85041cbbe7e1057b1cdf18244e4b176&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;raw_data&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;contract&#34;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&#34;parameter&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="s2">&#34;a3082be900000000000000000000000000000000000000000000000000000000000000540000000000000000000000000000000000000000000000000000000000000000&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;owner_address&#34;</span><span class="p">:</span> <span class="s2">&#34;41ff587581be807d3a90d73a7fd1def7c51d6c62ed&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;contract_address&#34;</span><span class="p">:</span> <span class="s2">&#34;412ec5f63da00583085d4c2c5e8ec3c8d17bde5e28&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;call_value&#34;</span><span class="p">:</span> <span class="mi">260000000</span>
+          <span class="p">},</span>
+          <span class="nt">&#34;type_url&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/protocol.TriggerSmartContract&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;TriggerSmartContract&#34;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;ref_block_bytes&#34;</span><span class="p">:</span> <span class="s2">&#34;93fb&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;ref_block_hash&#34;</span><span class="p">:</span> <span class="s2">&#34;ce06b75e2217ad39&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;expiration&#34;</span><span class="p">:</span> <span class="mi">1545895287000</span><span class="p">,</span>
+    <span class="nt">&#34;fee_limit&#34;</span><span class="p">:</span> <span class="mi">6000000</span><span class="p">,</span>
+    <span class="nt">&#34;timestamp&#34;</span><span class="p">:</span> <span class="mi">1545895230504</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="trx-通证转账">TRX 通证转账</h2>
+
+<p><img src="https://user-images.githubusercontent.com/2025174/50470722-b4b1e500-09ec-11e9-9832-ab430449e4cd.png" alt="image" /></p>
+
+<p>原始链接 <a href="https://tronscan.org/#/transaction/228b24129b2dbde8692e44f6943b28f3df6f6a514667ea316894cddbac6c8d4c">https://tronscan.org/#/transaction/228b24129b2dbde8692e44f6943b28f3df6f6a514667ea316894cddbac6c8d4c</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;ret&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;contractRet&#34;</span><span class="p">:</span> <span class="s2">&#34;SUCCESS&#34;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;signature&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&#34;09c9354006b6854217241f7061eb32ae0d03537c1caa7c4fdf2b99f1b8b906bb7ae9e9be80a24db4008f90bf83955612ec31a594e394f2e835324b1a11f18c3b01&#34;</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;txID&#34;</span><span class="p">:</span> <span class="s2">&#34;228b24129b2dbde8692e44f6943b28f3df6f6a514667ea316894cddbac6c8d4c&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;raw_data&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;contract&#34;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&#34;parameter&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;amount&#34;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="nt">&#34;asset_name&#34;</span><span class="p">:</span> <span class="s2">&#34;434244&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;owner_address&#34;</span><span class="p">:</span> <span class="s2">&#34;41ed7c12a59e5134c3e365e6e0711803ea16328e60&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;to_address&#34;</span><span class="p">:</span> <span class="s2">&#34;4116d7c90a41da1b2cc818704124bfbfa6d0de84dd&#34;</span>
+          <span class="p">},</span>
+          <span class="nt">&#34;type_url&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/protocol.TransferAssetContract&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;TransferAssetContract&#34;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;ref_block_bytes&#34;</span><span class="p">:</span> <span class="s2">&#34;9397&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;ref_block_hash&#34;</span><span class="p">:</span> <span class="s2">&#34;48ee569e4bf577bc&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;expiration&#34;</span><span class="p">:</span> <span class="mi">1545895218000</span><span class="p">,</span>
+    <span class="nt">&#34;timestamp&#34;</span><span class="p">:</span> <span class="mi">1545894920723</span>
+  <span class="p">}</span></code></pre></div>
+<p>其他全部详情  <a href="https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E6%93%8D%E4%BD%9C%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E.md">https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E6%93%8D%E4%BD%9C%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E.md</a></p>
+
+<p><a href="https://github.com/kaidiren/D6/issues/17">评论地址</a></p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://xli.me/tags/%E5%8C%BA%E5%9D%97%E9%93%BE"><span class="tag">区块链</span></a></li>
+        
+          <li><a href="https://xli.me/tags/%E6%8A%80%E6%9C%AF"><span class="tag">技术</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 Mr Fox</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://xli.me/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>
